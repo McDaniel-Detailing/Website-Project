@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services | McDaniel Detailing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html"><img src="logo.png" alt="McDetailing Logo" class="logo"/></a>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="book.html">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Intro -->
+  <section class="services-hero">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>All of our services can be done at your place or ours. If you want us to come to you, we will need access to a hose, power, and a decent amount space around your car to work with. Service pricing depends on the size of your car only. No matter how dirty it is, we will get it looking brand new for the price we quote you.</p>
+      <a href="book.html" class="btn primary square">Book Now</a>
+    </div>
+  </section>
+
+  <!-- Services List -->
+  <section class="services-list">
+    <div class="service-item" data-service="interior">
+      <div class="service-preview">
+        <img src="interior.webp" alt="Interior cleaning"/>
+        <div class="overlay"></div>
+        <div class="preview-text"><h3>Interior: Deep Clean & Restore</h3></div>
+      </div>
+      <div class="service-content">
+        <div class="content-top">
+          <div class="pricing">$260/$290 | 2 - 3 Hours</div>
+          <a href="book.html" class="btn secondary square">Book This Service</a>
+        </div>
+        <div class="content-bottom">
+          <div class="content-columns">
+            <div class="column includes">
+              <h4>Includes:</h4>
+              <ul>
+                <li>Back-to-front deep vacuuming</li>
+                <li>Steam cleaning of vents, cupholders, crevices, &amp; more</li>
+                <li>Enzyme treatment for stains</li>
+                <li>Carpet &amp; upholstery shampoo with mechanical agitation</li>
+                <li>Water extraction from carpet &amp; upholstery</li>
+                <li>Leather cleaned, conditioned, &amp; protected</li>
+                <li>Headliner spot cleaning</li>
+                <li>Deep cleaning of hard surfaces</li>
+                <li>Hard surface dressing applied</li>
+                <li>Streak-free cleaning of glass</li>
+                <li>Deodorization of car interior</li>
+                <li>Air-freshener application</li>
+                <li>UV protection treatment</li>
+                <li>Stain protection treatment</li>
+                <li>Pet hair removal*</li>
+              </ul>
+            </div>
+            <div class="column details">
+              <h4>Recommended:</h4>
+              <ul>
+                <li>For families with kids or pets</li>
+                <li>For vehicles exposed to dirt, food spills, or heavy daily use</li>
+                <li>After buying a used car</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-item" data-service="exterior">
+      <div class="service-preview">
+        <img src="exterior.jpg" alt="Exterior cleaning"/>
+        <div class="overlay"></div>
+        <div class="preview-text"><h3>Exterior: Wash, Decontaminate, &amp; Seal</h3></div>
+      </div>
+      <div class="service-content">
+        <div class="content-top">
+          <div class="pricing">$180/$220 | 1.5 - 2 Hours</div>
+          <a href="book.html" class="btn secondary square">Book This Service</a>
+        </div>
+        <div class="content-bottom">
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat volutpat.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-item" data-service="engine">
+      <div class="service-preview">
+        <img src="engine.jpeg" alt="Engine bay cleaning"/>
+        <div class="overlay"></div>
+        <div class="preview-text"><h3>Engine Bay Cleaning</h3></div>
+      </div>
+      <div class="service-content">
+        <div class="content-top">
+          <div class="pricing">$100 | 1 Hour</div>
+          <a href="book.html" class="btn secondary square">Book This Service</a>
+        </div>
+        <div class="content-bottom">
+          <p>Praesent euismod, urna et tincidunt consectetur, nisi purus aliquet urna.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-item" data-service="freshstart">
+      <div class="service-preview">
+        <img src="freshstart.webp" alt="Full detail"/>
+        <div class="overlay"></div>
+        <div class="preview-text"><h3>"Fresh Start" Full Detail Package</h3></div>
+      </div>
+      <div class="service-content">
+        <div class="content-top">
+          <div class="pricing">$500 | 4 - 5 Hours</div>
+          <a href="book.html" class="btn secondary square">Book This Service</a>
+        </div>
+        <div class="content-bottom">
+          <p>Sed dignissim, urna sed vehicula aliquet, tortor sapien tempor quam, nec molestie purus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Lightbox -->
+  <div id="service-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close">×</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col contact">
+        <h4>Contact Us</h4>
+        <p class="email">mcdetailin@gmail.com<br/>Tacoma, WA 98406</p>
+      </div>
+      <div class="footer-col social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="icons8-instagram-96.png" alt="Instagram"/></a>
+          <a href="#"><img src="icons8-facebook-96.png" alt="Facebook"/></a>
+          <a href="#"><img src="icons8-tiktok-96.png" alt="TikTok"/></a>
+          <a href="#"><img src="icons8-youtube-96.png" alt="YouTube"/></a>
+          <a href="#"><img src="icons8-x-96.png" alt="X"/></a>
+          <a href="#"><img src="icons8-linkedin-96.png" alt="LinkedIn"/></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const modal = document.getElementById('service-modal');
+    const modalBody = modal.querySelector('.modal-body');
+    const closeBtn = modal.querySelector('.modal-close');
+    document.querySelectorAll('.service-item').forEach(item => {
+      item.querySelector('.service-preview').addEventListener('click', () => {
+        modalBody.innerHTML = item.querySelector('.service-content').innerHTML;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>
