@@ -336,6 +336,7 @@ textarea {
 fieldset {
   border: none;
   margin-bottom: 20px;
+  font-weight: var(--font-weight-regular);
 }
 
 legend {
