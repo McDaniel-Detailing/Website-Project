@@ -540,3 +540,69 @@ header {
     padding: 8px 12px;   /* still tappable */
   }
 }
+
+/*──────────────────────────────────────────
+  1. Form-section separators
+──────────────────────────────────────────*/
+.form-section {
+  margin: 40px 0;                          /* space above & below */
+  padding-bottom: 20px;                    /* breathing room */
+  border-bottom: 1px solid var(--color-light-grey);
+}
+
+/* If you used <hr> instead */
+.form-divider {
+  border: 0;
+  border-top: 1px solid var(--color-light-grey);
+  margin: 40px 0;
+}
+
+/*──────────────────────────────────────────
+  2. Labels above text inputs
+──────────────────────────────────────────*/
+form label {
+  display: block;                          /* force above the field */
+  margin-bottom: 6px;                      /* small gap to input */
+  font-weight: var(--font-weight-bold);
+}
+
+/* Make sure text inputs/textarea keep their existing styling */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+  margin-bottom: 20px;                     /* space to next label/fieldset */
+}
+
+/*──────────────────────────────────────────
+  3. Inline radios & checkboxes
+──────────────────────────────────────────*/
+fieldset div label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;                         /* shows clickable area */
+}
+
+fieldset div label input {
+  margin-right: 10px;                      /* gap between button and text */
+  flex-shrink: 0;
+}
+
+/* Optional: tighten up the legend spacing */
+fieldset {
+  margin-bottom: 20px;
+}
+
+legend {
+  margin-bottom: 10px;
+  font-weight: var(--font-weight-bold);
+}
+
+/*──────────────────────────────────────────
+  4. Button group spacing
+──────────────────────────────────────────*/
+button[type="submit"] {
+  margin-top: 10px;
+}
