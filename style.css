@@ -399,3 +399,63 @@ footer {
 .service-preview {
   cursor: pointer;
 }
+
+/* 1. Push the hero content below your fixed header */
+:root {
+  /* if you ever change the header height, just update this one variable */
+  --header-height: 80px; /* ≈ your header-container’s 15px+50px logo+15px padding */
+}
+
+header {
+  height: var(--header-height);
+}
+
+.hero {
+  /* add top‐padding equal to the header’s height */
+  padding-top: var(--header-height);
+}
+
+/* 2. Give your hero buttons both horizontal _and_ vertical spacing */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;       /* allow them to wrap on small screens */
+  justify-content: center;
+  gap: 20px;             /* 20px all around each button */
+}
+
+/* remove the old margin rule if you have it */
+.hero-buttons .btn {
+  margin: 0;  
+}
+
+/*---------------------------------------------
+  1. Remove (or soften) the Hero dim‐overlay
+---------------------------------------------*/
+/* to remove it entirely: */
+.hero-overlay {
+  display: none;
+}
+
+/* OR, if you just want it lighter, reduce the alpha:
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.2);
+}
+*/
+
+/*---------------------------------------------
+  2. Remove the red “overlay” on service previews
+---------------------------------------------*/
+/* this hides the <div class="overlay"> under each .service-preview/.card */
+.service-preview .overlay,
+.card .overlay {
+  display: none;
+}
+
+/* OR, if you’d rather keep an overlay on hover only:
+.card .overlay {
+  background: transparent;
+}
+.card:hover .overlay {
+  background: rgba(230, 46, 46, 0.4);
+}
+*/
