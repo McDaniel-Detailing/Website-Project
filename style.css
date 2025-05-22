@@ -439,7 +439,7 @@ footer {
 }.hero {
   position: relative;
   background: 
-    url('images/hero.jpg')    /* ← your hero photo path */
+    url('F074D6E3-4C8C-4CB4-8423-AB5138947CF6.png')    /* ← your hero photo path */
     center / cover no-repeat;
   min-height: 82vh;
   padding: var(--header-height) 20px 0;
