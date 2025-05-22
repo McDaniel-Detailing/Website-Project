@@ -55,6 +55,10 @@ h2 {
   font-weight: var(--font-weight-black);
 }
 
+.overlay-text {
+  color: #111111
+}
+
 .service-item h3 {
   font-size: 20px;
   font-weight: var(--font-weight-black);
