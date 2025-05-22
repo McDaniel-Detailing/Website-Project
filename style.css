@@ -29,7 +29,7 @@
 
 body {
   padding-top: var(--header-height);
-  background: var(--color-off-black);
+  background: var(--color-section-bg);
   color: var(--color-white);
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
