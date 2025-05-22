@@ -388,3 +388,14 @@ footer {
   h1 { font-size: 40px; }
   nav ul { display: none; /* implement hamburger menu }
 }*/
+
+/* other stuff */
+/* hide the detailed content on the page */
+.service-content {
+  display: none;
+}
+
+/* give the previews a pointer on hover */
+.service-preview {
+  cursor: pointer;
+}
