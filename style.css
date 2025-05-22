@@ -507,17 +507,21 @@ footer {
   overflow: hidden;
 }
 
-section h1,
-section h2,
-section h3,
-section h4,
-section h5,
-section h6,
-section p {
-  color: #111111;
-}
-
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mb-1 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 2rem; }
+
+
+/* White text for header, footer, and hero only */
+header h1, header h2, header h3,
+footer h1, footer h2, footer h3,
+.hero h1, .hero h2, .hero h3 {
+  color: var(--color-white);
+}
+
+/* Dark headings in white sections */
+section h1, section h2, section h3,
+section h4, section h5, section h6 {
+  color: #111111;
+}
