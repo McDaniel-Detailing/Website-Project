@@ -483,18 +483,18 @@ footer {
 }
 
 .portfolio-widget {
-  padding: 0 0;
+  padding: 10px 10px;
   background: var(--color-off-black); /* matches your site theme */
 }
 
 .widget-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 10px 10px;
   text-align: center;
 }
 
 .widget-frame {
-  margin-top: 40px;
+  margin-top: 10px;
   overflow: hidden;
 }
