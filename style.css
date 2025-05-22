@@ -140,7 +140,7 @@ header {
 =============================================*/
 .hero {
   position: relative;
-  background: url('F074D6E3-4C8C-4CB4-8423-AB5138947CF6.png') center/cover no-repeat;
+  background: url('images/F074D6E3-4C8C-4CB4-8423-AB5138947CF6.png') center/cover no-repeat;
   min-height: 82vh;
   padding: var(--header-height) 20px 40px;
   display: flex; flex-direction: column;
