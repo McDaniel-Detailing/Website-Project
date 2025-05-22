@@ -153,6 +153,7 @@ header {
 .hero-content {
   position: relative;
   z-index: 1;
+  color: var(--color-white);
 }
 
 .hero-buttons {
