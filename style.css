@@ -445,3 +445,39 @@ footer {
     font-size: 14px;
     padding: 8px 12px;
   }
+
+/* Square service preview with overlayed text */
+.service-preview {
+  position: relative;
+  aspect-ratio: 1 / 1;         /* keeps card square */
+  overflow: hidden;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Dimmed image */
+.service-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);     /* dims image */
+  display: block;
+}
+
+/* Overlay element (optional if using brightness filter) */
+.service-preview .overlay {
+  display: none; /* already dimmed via filter */
+}
+
+/* Centered text on top of image */
+.preview-text {
+  position: absolute;
+  z-index: 1;
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: var(--font-weight-black);
+  padding: 0 10px;
+}
