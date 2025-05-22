@@ -495,3 +495,48 @@ header {
   display: flex;
   gap: 30px;
 }
+
+/*=============================================
+=      Full-Screen, Scrollable Modal Fix     =
+=============================================*/
+
+/* Ensure modal covers entire viewport above header/footer */
+.modal {
+  z-index: 2000;           /* sit on top of header (z-index:1000) */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;           /* toggled by your JS */
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;        /* allow page-height scrolling */
+  padding: 20px;           /* give content breathing room */
+}
+
+/* Constrain the content box and make its own scroll if it’s too tall */
+.modal-content {
+  max-height: 100%;        /* can grow to full viewport */
+  overflow-y: auto;        /* scroll inside the lightbox */
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+/*=============================================
+=        Responsive Nav Spacing Tweaks       =
+=============================================*/
+
+/* On small screens, reduce gap and allow wrapping */
+@media (max-width: 600px) {
+  .header-container nav ul {
+    display: flex;       
+    flex-wrap: wrap;     /* let items wrap to new line if needed */
+    justify-content: center;
+    gap: 10px;           /* tighter than the desktop 30px */
+  }
+
+  .header-container nav a {
+    font-size: 14px;     /* slightly smaller to fit */
+    padding: 8px 12px;   /* still tappable */
+  }
+}
