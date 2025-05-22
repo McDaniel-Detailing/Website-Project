@@ -325,7 +325,7 @@ textarea {
   font-size: 16px;
   font-weight: var(--font-weight-regular);
   color: var(--color-white);
-  background: var(--color-off-black);
+  background: var(--color-light-grey);
   margin-bottom: 1em;
 }
 
