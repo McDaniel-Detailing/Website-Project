@@ -11,7 +11,6 @@
   --font-weight-regular:  400;
   --font-weight-bold:     700;
   --font-weight-black:    900;
-
   --transition-duration:  0.3s;
   --header-height:        80px;
 }
@@ -54,20 +53,6 @@ h2 {
   font-weight: var(--font-weight-black);
 }
 
-.overlay-text {
-  color: var(--color-white);
-}
-
-.service-item h3 {
-  font-size: 20px;
-  font-weight: var(--font-weight-black);
-}
-
-.features-container .feature h3 {
-  font-size: 28px;
-  font-weight: var(--font-weight-black);
-}
-
 p {
   font-size: 18px;
   margin-bottom: 1em;
@@ -80,7 +65,7 @@ p {
 .header-container,
 .footer-container {
   max-width: 1200px;
-  margin: 0 0;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -89,7 +74,9 @@ p {
 =============================================*/
 header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: var(--header-height);
   background: var(--color-off-black);
   box-shadow: 0 2px 8px var(--color-black-shadow);
@@ -101,20 +88,19 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 20px;
 }
 
 .logo {
   height: 50px;
 }
 
-.header-container nav ul {
+nav ul {
   display: flex;
   gap: 30px;
   list-style: none;
 }
 
-.header-container nav a {
+nav a {
   display: inline-block;
   font-size: 16px;
   font-weight: var(--font-weight-regular);
@@ -125,8 +111,7 @@ header {
   transition: color var(--transition-duration) ease;
 }
 
-.header-container nav a.active,
-.header-container nav li.active > a {
+nav a.active {
   color: var(--color-fire-red);
 }
 
@@ -138,13 +123,17 @@ header {
   background: url('images/F074D6E3-4C8C-4CB4-8423-AB5138947CF6.png') center/cover no-repeat;
   min-height: 82vh;
   padding: var(--header-height) 20px 40px;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  text-align: center; color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
 }
 
 .hero-overlay {
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
@@ -152,20 +141,6 @@ header {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--color-white);
-}
-
-.hero-buttons {
-  display: flex; flex-wrap: wrap;
-  justify-content: center; gap: 20px;
-}
-
-.hero h1 {
-  margin-bottom: 0.5em;
-}
-
-.hero p {
-  margin-bottom: 1em;
 }
 
 .hero-buttons {
@@ -175,43 +150,39 @@ header {
   gap: 20px;
 }
 
-.hero-buttons .btn {
-  margin: 0;
+.hero h1,
+.hero p {
+  margin-bottom: 1em;
 }
 
 /*=============================================
-  Section Styling
+  Sections
 =============================================*/
 section {
   background: var(--color-white);
-  color: #111111
+  color: var(--color-off-black);
   padding: 60px 0;
+}
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+  color: var(--color-off-black);
 }
 
 /*=============================================
   Services & Portfolio Grids
 =============================================*/
-.services,
+.services-list,
 .features-container {
   display: grid;
   gap: 20px;
-  margin: 0 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 0 auto;
   padding: 20px 0;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@media (min-width: 1200px) {
-  .services-list,
-  .features-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .services-list,
-  .features-container {
-    grid-template-columns: 1fr;
-  }
 }
 
 .service-item,
@@ -220,16 +191,33 @@ section {
   text-align: center;
 }
 
-.service-content {
-  display: none;
-}
-
 .service-preview {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
-.service-preview .overlay,
-.card .overlay {
+.service-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.preview-text {
+  position: absolute;
+  z-index: 1;
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: var(--font-weight-black);
+  padding: 0 10px;
+}
+
+.service-content {
   display: none;
 }
 
@@ -239,6 +227,7 @@ section {
 .btn {
   display: inline-block;
   font-family: inherit;
+  font-weight: var(--font-weight-bold);
   text-decoration: none;
   padding: 12px 30px;
   border: 2px solid var(--color-fire-red);
@@ -250,15 +239,12 @@ section {
 .btn.primary {
   background: var(--color-fire-red);
   color: var(--color-white);
-  font-size: 16px;
-  font-weight: var(--font-weight-black);
 }
 
 .btn.outlined {
   background: transparent;
   color: var(--color-white);
   font-size: 14px;
-  font-weight: var(--font-weight-regular);
 }
 
 .btn.square {
@@ -272,27 +258,8 @@ section {
 }
 
 /*=============================================
-  Cards & Modals
+  Modals
 =============================================*/
-.card {
-  background: var(--color-off-black);
-  transition: transform var(--transition-duration) ease,
-              box-shadow var(--transition-duration) ease;
-  position: relative;
-}
-
-.card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px var(--color-black-shadow);
-}
-
-.card img {
-  width: 100%;
-  aspect-ratio: 2/1;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
 .modal {
   position: fixed;
   inset: 0;
@@ -330,6 +297,18 @@ section {
 /*=============================================
   Forms
 =============================================*/
+form {
+  background: var(--color-white);
+  color: var(--color-off-black);
+  padding: 40px 20px;
+}
+
+label,
+legend {
+  color: var(--color-off-black);
+  font-weight: var(--font-weight-regular);
+}
+
 input[type="text"],
 input[type="tel"],
 input[type="email"],
@@ -341,25 +320,14 @@ textarea {
   border-radius: 4px;
   font-family: var(--font-family);
   font-size: 16px;
-  font-weight: var(--font-weight-regular);
-  color: var(--color-off-black);
   background: var(--color-light-grey);
+  color: var(--color-off-black);
   margin-bottom: 20px;
 }
 
 fieldset {
   border: none;
   margin-bottom: 20px;
-  font-weight: var(--font-weight-regular);
-  color: var(--color-off-black);
-}
-
-legend {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: var(--font-weight-bold);
-  font-size: 16px;
-  color: var(--color-off-black);
 }
 
 .form-section {
@@ -374,13 +342,6 @@ legend {
   margin: 40px 0;
 }
 
-form label:not(fieldset legend) {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: var(--font-weight-regular);
-  color: var(--color-off-black);
-}
-
 fieldset > div {
   display: flex;
   flex-wrap: wrap;
@@ -392,7 +353,6 @@ fieldset > div > label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
 }
 
 /*=============================================
@@ -402,6 +362,7 @@ footer {
   background: var(--color-off-black);
   box-shadow: 0 -2px 8px var(--color-black-shadow);
   padding: 40px 0;
+  color: var(--color-white);
 }
 
 .footer-container {
@@ -443,85 +404,22 @@ footer {
     font-size: 40px;
   }
 
-  .header-container nav ul {
+  nav ul {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
   }
 
-  .header-container nav a {
+  nav a {
     font-size: 14px;
     padding: 8px 12px;
   }
-
-/* Square service preview with overlayed text */
-.service-preview {
-  position: relative;
-  aspect-ratio: 1 / 1;         /* keeps card square */
-  overflow: hidden;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
-/* Dimmed image */
-.service-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5);     /* dims image */
-  display: block;
-}
-
-/* Overlay element (optional if using brightness filter) */
-.service-preview .overlay {
-  display: none; /* already dimmed via filter */
-}
-
-/* Centered text on top of image */
-.preview-text {
-  position: absolute;
-  z-index: 1;
-  color: var(--color-white);
-  font-size: 18px;
-  font-weight: var(--font-weight-black);
-  padding: 0 10px;
-}
-
-.portfolio-widget {
-  padding: 10px 10px;
-  background: var(--color-white); /* matches your site theme */
-}
-
-.widget-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 10px;
-  text-align: center;
-}
-
-.widget-frame {
-  margin-top: 10px;
-  overflow: hidden;
-}
-
+/*=============================================
+  Utility Classes
+=============================================*/
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mb-1 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 2rem; }
-
-
-/* White text for header, footer, and hero only */
-header h1, header h2, header h3,
-footer h1, footer h2, footer h3,
-.hero h1, .hero h2, .hero h3 {
-  color: var(--color-white);
-}
-
-/* Dark headings in white sections */
-section h1, section h2, section h3,
-section h4, section h5, section h6 {
-  color: #111111;
-}
