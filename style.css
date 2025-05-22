@@ -606,3 +606,20 @@ legend {
 button[type="submit"] {
   margin-top: 10px;
 }
+
+:root {
+  --header-height: 80px;
+}
+
+header {
+  height: var(--header-height);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--color-off-black);
+  z-index: 1000;
+}
+
+body {
+  padding-top: var(--header-height);
+}
+
