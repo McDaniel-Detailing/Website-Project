@@ -481,3 +481,20 @@ footer {
   font-weight: var(--font-weight-black);
   padding: 0 10px;
 }
+
+.portfolio-widget {
+  padding: 80px 0;
+  background: var(--color-off-black); /* matches your site theme */
+}
+
+.widget-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.widget-frame {
+  margin-top: 40px;
+  overflow: hidden;
+}
