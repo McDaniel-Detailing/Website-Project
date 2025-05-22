@@ -201,7 +201,7 @@ section {
   display: grid;
   gap: 20px;
   margin: 0 auto;
-  pasding: 20px 0;
+  padding: 20px 0;
   grid-template-columns: repeat(2, 1fr);
 }
 
