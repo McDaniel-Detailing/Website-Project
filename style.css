@@ -361,7 +361,7 @@ legend {
 form label:not(fieldset legend) {
   display: block;
   margin-bottom: 6px;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-regular);
 }
 
 fieldset > div {
