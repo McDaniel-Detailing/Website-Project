@@ -493,7 +493,7 @@ footer {
 
 .portfolio-widget {
   padding: 10px 10px;
-  background: var(--color-off-black); /* matches your site theme */
+  background: var(--color-white); /* matches your site theme */
 }
 
 .widget-container {
