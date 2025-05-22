@@ -180,6 +180,7 @@ header {
 =============================================*/
 section {
   background: var(--color-white);
+  color: #111111
   padding: 60px 0;
 }
 
