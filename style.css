@@ -459,3 +459,39 @@ header {
   background: rgba(230, 46, 46, 0.4);
 }
 */
+
+/* Ensure header always sits on top and behind it is solid off-black */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--color-off-black);
+  z-index: 1000;
+}
+
+/* Base nav item styling */
+.header-container nav a {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-white);
+  text-decoration: none;
+  padding: 10px 15px;       /* gives them breathing room */
+  text-transform: uppercase; /* if you want uppercase */
+  transition: color .3s ease;
+}
+
+/* Active link (if class on the <a>) */
+.header-container nav a.active {
+  color: var(--color-fire-red);
+}
+
+/* Active link (if class on the <li>) */
+.header-container nav li.active > a {
+  color: var(--color-fire-red);
+}
+
+/* Spacing between items (fallback if your browser doesn’t support gap on flex) */
+.header-container nav ul {
+  display: flex;
+  gap: 30px;
+}
