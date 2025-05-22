@@ -7,6 +7,7 @@
   --color-fire-red:       #E62E2E;
   --color-light-grey:     #BCBCBC;
   --color-white:          #FFFFFF;
+  --color-section-bg: #1a1a1a; /* lighter than header/footer */
 
   --font-family:          'Montserrat', sans-serif;
   --font-weight-regular:  400;
@@ -180,7 +181,7 @@ header {
   Section Styling
 =============================================*/
 section {
-  background: var(--color-off-black);
+  background: var(--color-section-bg);
   padding: 60px 0;
 }
 
