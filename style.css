@@ -214,7 +214,7 @@ section h6 {
 }
 
 .service-preview:hover img {
-  filter: brightness(0.4); /* Dim image */
+  filter: brightness(0.1); /* Dim image */
 }
 
 .preview-text {
