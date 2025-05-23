@@ -2,23 +2,27 @@
   Root Variables
 =============================================*/
 :root {
-  --color-off-black:      #111111;
-  --color-black-shadow:   rgba(0, 0, 0, 0.7);
-  --color-fire-red:       #E62E2E;
-  --color-light-grey:     #BCBCBC;
-  --color-white:          #FFFFFF;
-  --font-family:          'Montserrat', sans-serif;
-  --font-weight-regular:  400;
-  --font-weight-bold:     700;
-  --font-weight-black:    900;
-  --transition-duration:  0.3s;
-  --header-height:        80px;
+  --color-off-black:    #111111;
+  --color-black-shadow: rgba(0, 0, 0, 0.7);
+  --color-fire-red:     #E62E2E;
+  --color-light-grey:   #BCBCBC;
+  --color-white:        #FFFFFF;
+
+  --font-family:         'Montserrat', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold:    700;
+  --font-weight-black:   900;
+
+  --transition-duration: 0.3s;
+  --header-height:      80px;
 }
 
 /*=============================================
   Global Reset & Base Styles
 =============================================*/
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,19 +37,17 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   font-family: var(--font-family);
+  font-size: 56px;
+  font-weight: var(--font-weight-black);
   margin-bottom: 0.5em;
 }
 
-h1 {
-  font-size: 56px;
-  font-weight: var(--font-weight-black);
-}
-
-h2 {
-  font-size: 56px;
-  font-weight: var(--font-weight-black);
+h3, h4, h5, h6,
+.subheader {
+  font-family: var(--font-family);
+  margin-bottom: 0.5em;
 }
 
 .subheader {
@@ -74,9 +76,7 @@ p {
 =============================================*/
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: var(--header-height);
   background: var(--color-off-black);
   box-shadow: 0 2px 8px var(--color-black-shadow);
@@ -95,22 +95,22 @@ header {
 }
 
 nav ul {
+  list-style: none;
   display: flex;
   gap: 30px;
-  list-style: none;
 }
 
 nav a {
-  display: inline-block;
   font-size: 16px;
   font-weight: var(--font-weight-regular);
   color: var(--color-white);
   text-decoration: none;
-  padding: 10px 15px;
   text-transform: uppercase;
+  padding: 10px 15px;
   transition: color var(--transition-duration) ease;
 }
 
+nav a:hover,
 nav a.active {
   color: var(--color-fire-red);
 }
@@ -120,7 +120,8 @@ nav a.active {
 =============================================*/
 .hero {
   position: relative;
-  background: url('images/F074D6E3-4C8C-4CB4-8423-AB5138947CF6-2.webp') center/cover no-repeat;
+  background: url('images/F074D6E3-4C8C-4CB4-8423-AB5138947CF6-2.webp')
+              center/cover no-repeat;
   min-height: 82vh;
   padding: var(--header-height) 20px 40px;
   display: flex;
@@ -128,32 +129,23 @@ nav a.active {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--color-white);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 0;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--color-white);
 }
 
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
-}
-
-.hero h1,
-.hero p {
-  margin-bottom: 1em;
 }
 
 /*=============================================
@@ -182,8 +174,9 @@ section h6 {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px;
 }
 
 .service-item,
@@ -193,11 +186,10 @@ section h6 {
 }
 
 .service-preview {
-  max-height: 300px;
-  object-fit: cover;
-  width: 100%;
   position: relative;
-  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-height: 300px;
+  aspect-ratio: 1/1;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -206,35 +198,31 @@ section h6 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-preview:hover {
-  transform: scale(1.03); /* Slight zoom */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
-}
-
 .service-preview img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(0.5);
   transition: filter 0.3s ease;
-  display: block;
+}
+
+.service-preview:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .service-preview:hover img {
-  filter: brightness(0.25); /* Dim image */
+  filter: brightness(0.25);
 }
 
 .preview-text {
   position: absolute;
-  z-index: 1;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
   color: var(--color-white);
   font-size: 18px;
   font-weight: var(--font-weight-black);
   padding: 0 10px;
-}
-
-.service-content {
-  display: none;
 }
 
 /*=============================================
@@ -248,7 +236,9 @@ section h6 {
   padding: 12px 30px;
   border: 2px solid var(--color-fire-red);
   border-radius: 0;
-  transition: all var(--transition-duration) ease;
+  transition: background var(--transition-duration) ease,
+              color var(--transition-duration) ease,
+              border-color var(--transition-duration) ease;
   cursor: pointer;
 }
 
@@ -261,10 +251,6 @@ section h6 {
   background: transparent;
   color: var(--color-white);
   font-size: 14px;
-}
-
-.btn.square {
-  border-radius: 0;
 }
 
 .btn:hover {
@@ -283,9 +269,8 @@ section h6 {
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
-  overflow-y: auto;
   padding: 20px;
+  z-index: 2000;
 }
 
 .modal-content {
@@ -301,8 +286,7 @@ section h6 {
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 10px; right: 10px;
   font-size: 24px;
   color: var(--color-white);
   background: none;
@@ -325,9 +309,7 @@ legend {
   font-weight: var(--font-weight-regular);
 }
 
-input[type="text"],
-input[type="tel"],
-input[type="email"],
+input,
 select,
 textarea {
   width: 100%;
@@ -388,14 +370,13 @@ footer {
   gap: 20px;
 }
 
-.footer-col.contact h4,
-.footer-col.social h4 {
+.footer-col h4 {
   font-size: 18px;
   font-weight: var(--font-weight-black);
   margin-bottom: 10px;
 }
 
-.footer-col.contact .email,
+.footer-col .email,
 .footer-bottom {
   font-size: 14px;
   font-weight: var(--font-weight-regular);
@@ -413,10 +394,10 @@ footer {
 }
 
 /*=============================================
-  Responsive Adjustments
+  Responsive Breakpoints
 =============================================*/
 @media (max-width: 600px) {
-  h1 {
+  h1, h2 {
     font-size: 40px;
   }
 
@@ -432,6 +413,18 @@ footer {
   }
 }
 
+@media (min-width: 600px) {
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .services-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /*=============================================
   Utility Classes
 =============================================*/
@@ -440,42 +433,14 @@ footer {
 .mb-1 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 2rem; }
 
-
 .overlay-text {
-  color: var(--color-white) 
-}
-
-/* Give bullet lists breathing room inside the lightbox */
-.modal-content ul {
-  padding-left: 1.5rem;
-  margin-left: 0;
-}
-
-.special-padding {
-  padding-top: 2rem;
-}
-
-.hero-content h1 {
   color: var(--color-white);
 }
 
-.services-list {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr; /* Mobile default: 1 column */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-@media (min-width: 600px) {
-  .services-list {
-    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
-  }
-}
-
-@media (min-width: 1000px) {
-  .services-list {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
-  }
+/*=============================================
+  Lightbox Lists
+=============================================*/
+.modal-content ul {
+  padding-left: 1.5rem;
+  margin-left: 0;
 }
