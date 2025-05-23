@@ -203,6 +203,12 @@ section h6 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-preview:hover {
+  transform: scale(1.03); /* Slight zoom */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
 }
 
 .service-preview img {
@@ -211,6 +217,7 @@ section h6 {
   object-fit: cover;
   filter: brightness(0.5);
   transition: filter 0.3s ease;
+  display: block;
 }
 
 .service-preview:hover img {
