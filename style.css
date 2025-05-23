@@ -426,5 +426,13 @@ footer {
 
 
 .overlay-text {
-  color: var(--color-white)
+  color: var(--color-white) 
 }
+
+/* Give bullet lists breathing room inside the lightbox */
+.modal-content ul {
+  padding-left: 1.5rem;
+  margin-left: 0;
+}
+
+
