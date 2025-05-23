@@ -193,6 +193,9 @@ section h6 {
 }
 
 .service-preview {
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
@@ -207,6 +210,11 @@ section h6 {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.5);
+  transition: filter 0.3s ease;
+}
+
+.service-preview:hover img {
+  filter: brightness(0.4); /* Dim image */
 }
 
 .preview-text {
@@ -444,3 +452,23 @@ footer {
   color: var(--color-white);
 }
 
+.services-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* Mobile default: 1 column */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 600px) {
+  .services-list {
+    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+  }
+}
+
+@media (min-width: 1000px) {
+  .services-list {
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
+  }
+}
