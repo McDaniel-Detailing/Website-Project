@@ -41,14 +41,15 @@
         <input type="text" name="_gotcha" style="display:none">
 
         <div class="form-section">
-          <label for="email">Email</label>
+          <label for="name">Name</label>
           <input
-            type="email"
-            id="email"
-            name="email"
+            type="text"
+            id="name"
+            name="name"
             required
+            pattern="^[A-Za-z\s]{2,}$"
+            title="Please enter your first and last name (letters and spaces only)"
           />
-
           <label for="phone">Phone Number</label>
           <input
             type="tel"
@@ -58,9 +59,13 @@
             pattern="^\(?\d{3}\)?[ -.]?\d{3}[ -.]?\d{4}$"
             title="Enter a 10-digit U.S. phone number, e.g. (206) 555-1234"
           />
-            
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
         </div>
 
         <div class="form-section">
@@ -104,7 +109,7 @@
           <select id="location" name="location" onchange="toggleAccessField()" required>
             <option value="">--Select--</option>
             <option value="we-come">Client's Place</option>
-            <option value="you-come">McDaniel Detaililing Homebase</option>
+            <option value="you-come">McDaniel Detailing's Place</option>
           </select>
 
           <div id="access-checkbox" style="display:none;">
