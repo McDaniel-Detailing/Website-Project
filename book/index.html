@@ -30,109 +30,87 @@
   </header>
 
   <!-- Booking Form Wrapped in Container -->
-  <section>
-    <div class="container">
-      <form action="https://formspree.io/f/xyzwabaq?redirect=https://www.themcdetailing.com/" method="POST">
-        <h1>Booking Request Form</h1>
+<form action="https://formspree.io/f/xyzwabaq" method="POST">
+  <!-- CLIENT INFO -->
+  <fieldset class="form-section">
+    <legend>1. Client Information</legend>
 
-        <!-- Hidden settings -->
-        <input type="hidden" name="_next" value="https://themcdetailing.com/">
-        <input type="hidden" name="_subject" value="New Booking Request from Website">
-        <input type="text" name="_gotcha" style="display:none">
+    <label for="name">Full Name *</label>
+    <input type="text" id="name" name="name" pattern="[A-Za-z\s]{2,}" required placeholder="John Doe">
 
-        <div class="form-section">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            pattern="^[A-Za-z\s]{2,}$"
-            title="Please enter your first and last name (letters and spaces only)"
-          />
-          <label for="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            required
-            pattern="^\(?\d{3}\)?[ -.]?\d{3}[ -.]?\d{4}$"
-            title="Enter a 10-digit U.S. phone number, e.g. (206) 555-1234"
-          />
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-          />
-        </div>
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" pattern="^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" required placeholder="(123) 456-7890">
 
-        <div class="form-section">
-          <fieldset>
-            <legend>Select a Service (prices depend on size and dirtiness)</legend>
-            <div>
-              <label>
-                <input type="radio" name="service" value="full">
-                "Fresh Start" Full Detail Package – $290–350 (5–6 hrs)
-              </label>
-              <label>
-                <input type="radio" name="service" value="interior" required>
-                Interior: Deep Clean & Restore – $170–210 (3–3.5 hrs)
-              </label>
-              <label>
-                <input type="radio" name="service" value="exterior">
-                Exterior: Wash, Decontaminate, & Seal – $150–190 (2–2.5 hrs)
-              </label>
-            </div>
-          </fieldset>
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required placeholder="you@example.com">
+  </fieldset>
 
-          <fieldset>
-            <legend>Add-ons (select as many as you want)</legend>
-            <div>
-              <label>
-                <input type="checkbox" name="addons" value="engine">
-                Engine Bay Cleaning – $50 (45 mins)
-              </label>
-              <label>
-                <input type="checkbox" name="addons" value="pet">
-                Pet Hair Removal – $25
-              </label>
-            </div>
-          </fieldset>
+  <!-- CAR INFO -->
+  <fieldset class="form-section">
+    <legend>2. Vehicle Information</legend>
 
-          <label for="location">Service Location</label>
-          <select id="location" name="location" onchange="toggleAccessField()" required>
-            <option value="">--Select--</option>
-            <option value="we-come">Client's Place</option>
-            <option value="you-come">McDaniel Detailing's Place</option>
-          </select>
+    <label for="make">Vehicle Make *</label>
+    <input type="text" id="make" name="make" required placeholder="Toyota">
 
-          <div id="access-checkbox" style="display:none;">
-            <label>
-              <input type="checkbox" id="access" name="access">
-              I will provide access to power and a hose
-            </label>
-          </div>
-        </div>
+    <label for="model">Vehicle Model *</label>
+    <input type="text" id="model" name="model" required placeholder="Camry">
 
-        <div class="form-section">
-          <label for="car-info">Car Info (year, make, model)</label>
-          <input type="text" id="car-info" name="carinfo" required>
+    <label for="year">Vehicle Year *</label>
+    <input type="text" id="year" name="year" pattern="^(19|20)\d{2}$" required placeholder="2020">
 
-          <label for="notes">Anything else?</label>
-          <textarea id="notes" name="notes" rows="4"></textarea>
-        </div>
+    <hr class="form-divider">
 
-        <div class="form-section">
-          <button type="submit" class="btn primary">
-            Submit Booking Request
-          </button>
-        </div>
-      </form>
+    <p><strong>State of Vehicle:</strong> Please rate each category below.</p>
+    <div class="vehicle-state-columns">
+      <!-- Dirtiness -->
+      <div class="vehicle-column">
+        <h4>Dirtiness</h4>
+        <label><input type="radio" name="dirtiness" value="1" required> 1 – Just washed, spotless</label>
+        <label><input type="radio" name="dirtiness" value="2"> 2 – Minor dust or fingerprints</label>
+        <label><input type="radio" name="dirtiness" value="3"> 3 – Light dirt or crumbs</label>
+        <label><input type="radio" name="dirtiness" value="4"> 4 – Heavy dirt, mud, or trash</label>
+        <label><input type="radio" name="dirtiness" value="5"> 5 – Extreme filth or neglect</label>
+      </div>
+
+      <!-- Stain/Odor -->
+      <div class="vehicle-column">
+        <h4>Stain / Odor</h4>
+        <label><input type="radio" name="stain_odor" value="1" required> 1 – No stains or odors</label>
+        <label><input type="radio" name="stain_odor" value="2"> 2 – Minor stains or faint odor</label>
+        <label><input type="radio" name="stain_odor" value="3"> 3 – Moderate stains or smells</label>
+        <label><input type="radio" name="stain_odor" value="4"> 4 – Strong stains or odors</label>
+        <label><input type="radio" name="stain_odor" value="5"> 5 – Severe stains or intense smell</label>
+      </div>
+
+      <!-- Pet Hair -->
+      <div class="vehicle-column">
+        <h4>Pet Hair</h4>
+        <label><input type="radio" name="pet_hair" value="1" required> 1 – No pet hair</label>
+        <label><input type="radio" name="pet_hair" value="2"> 2 – A few stray hairs</label>
+        <label><input type="radio" name="pet_hair" value="3"> 3 – Noticeable patches</label>
+        <label><input type="radio" name="pet_hair" value="4"> 4 – Hair on most surfaces</label>
+        <label><input type="radio" name="pet_hair" value="5"> 5 – Thick covering of hair</label>
+      </div>
     </div>
-  </section>
+  </fieldset>
 
+  <!-- SCHEDULING -->
+  <fieldset class="form-section">
+    <legend>3. Scheduling Preferences</legend>
+    <p>
+      We prioritize bookings on <strong>Tuesdays, Thursdays, and Saturdays</strong>, but we are happy to work with your availability on any day <strong>except Sunday</strong>. 
+      We will follow up to confirm your appointment time and pricing.
+    </p>
+
+    <label for="preferred-date">Preferred Date *</label>
+    <input type="date" id="preferred-date" name="preferred_date" required>
+
+    <label for="notes">Additional Notes or Requests</label>
+    <textarea id="notes" name="notes" rows="4" placeholder="Let us know if you have any specific concerns or requests..."></textarea>
+  </fieldset>
+
+  <button type="submit" class="btn primary square">Submit Request</button>
+</form>
   <!-- Footer -->
   <footer>
     <div class="footer-container">
