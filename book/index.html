@@ -193,8 +193,8 @@
 
   const dateInput = document.getElementById('preferred-date');
   const timeSelect = document.getElementById('preferred-time');
-  const dateField = document.querySelector('label[for="preferred-date"]');
-  const timeField = document.querySelector('label[for="preferred-time"]');
+  const dateWrapper = document.getElementById('date-wrapper');
+  const timeWrapper = document.getElementById('time-wrapper');
 
   function updateFormLogic() {
     const selectedService = [...serviceRadios].find(r => r.checked)?.value;
@@ -217,16 +217,16 @@
       checklistInput.removeAttribute('required');
     }
 
-    // Show/hide date field
+    // Show/hide date field based on service selection
     if (selectedService) {
-      dateInput.parentElement.style.display = 'block';
+      dateWrapper.style.display = 'block';
     } else {
-      dateInput.value = "";
-      dateInput.parentElement.style.display = 'none';
-      timeSelect.parentElement.style.display = 'none';
+      dateWrapper.style.display = 'none';
+      dateInput.value = '';
+      timeWrapper.style.display = 'none';
     }
 
-    updateTimeOptions(); // Recalculate available times
+    updateTimeOptions();
   }
 
   function generateTimeOptions(startHour, endHour, interval = 30) {
@@ -248,7 +248,7 @@
     const dateValue = dateInput.value;
 
     if (!selectedService || !dateValue) {
-      timeSelect.parentElement.style.display = 'none';
+      timeWrapper.style.display = 'none';
       return;
     }
 
@@ -258,15 +258,20 @@
     let times = [];
 
     if (selectedService === "Full Detail") {
-      if (isWeekend) times = generateTimeOptions(7, 12);
-      else times = ["3:00 PM"];
+      if (isWeekend) {
+        times = generateTimeOptions(7, 12);
+      } else {
+        times = ["3:00 PM"];
+      }
+    } else if (selectedService === "Interior Detail" || selectedService === "Exterior Detail") {
+      if (isWeekend) {
+        times = generateTimeOptions(7, 15);
+      } else {
+        times = generateTimeOptions(15, 17);
+      }
     }
 
-    if (selectedService === "Interior Detail" || selectedService === "Exterior Detail") {
-      if (isWeekend) times = generateTimeOptions(7, 15);
-      else times = generateTimeOptions(15, 17);
-    }
-
+    // Update time select dropdown
     timeSelect.innerHTML = '<option value="" disabled selected>Select a time</option>';
     times.forEach(time => {
       const option = document.createElement('option');
@@ -275,18 +280,17 @@
       timeSelect.appendChild(option);
     });
 
-    timeSelect.parentElement.style.display = times.length ? 'block' : 'none';
+    timeWrapper.style.display = times.length ? 'block' : 'none';
   }
 
-  // Event Listeners
+  // Add event listeners
   serviceRadios.forEach(radio => radio.addEventListener('change', updateFormLogic));
   locationSelect.addEventListener('change', updateFormLogic);
   dateInput.addEventListener('change', updateTimeOptions);
 
-  // Init on load
   window.addEventListener('DOMContentLoaded', () => {
-    dateInput.parentElement.style.display = 'none';
-    timeSelect.parentElement.style.display = 'none';
+    dateWrapper.style.display = 'none';
+    timeWrapper.style.display = 'none';
     updateFormLogic();
   });
 </script>
