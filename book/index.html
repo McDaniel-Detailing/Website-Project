@@ -133,20 +133,27 @@
   </fieldset>
 
   <!-- 5. SCHEDULING -->
+  <!-- 5. SCHEDULING -->
   <fieldset class="form-section">
     <legend>5. Scheduling</legend>
     <p>
       We prefer scheduling on <strong>Tuesdays, Thursdays, and Saturdays</strong>, but we’re happy to coordinate with your availability on any day except Sunday. After submission, we will contact you to confirm the exact appointment time and pricing.
     </p>
-
-    <label for="preferred-date">Preferred Date *</label>
-    <input type="date" id="preferred-date" name="preferred_date" required>
-    
-    <label for="preferred-time">Preferred Time *</label>
-    <select id="preferred-time" name="preferred_time" required>
-      <option value="" disabled selected>Select a time</option>
-    </select>
-
+  
+    <!-- DATE FIELD WRAPPER -->
+    <div id="date-wrapper">
+      <label for="preferred-date">Preferred Date *</label>
+      <input type="date" id="preferred-date" name="preferred_date" required>
+    </div>
+  
+    <!-- TIME FIELD WRAPPER -->
+    <div id="time-wrapper">
+      <label for="preferred-time">Preferred Time *</label>
+      <select id="preferred-time" name="preferred_time" required>
+        <option value="" disabled selected>Select a time</option>
+      </select>
+    </div>
+  
     <label for="notes">Additional Notes or Requests</label>
     <textarea id="notes" name="notes" rows="4" placeholder="Let us know if you have any specific concerns or requests..."></textarea>
   </fieldset>
