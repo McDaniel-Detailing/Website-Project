@@ -72,7 +72,7 @@
     <input type="number" id="year" name="vehicle_year" min="1900" max="2099" required>
 
     <div id="vehicle-state" style="display: none; margin-top: 20px;">
-      <legend>State of Vehicle</legend>
+      <legend>State of Vehicle's Interior</legend>
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <!-- Dirtiness -->
         <div>
@@ -145,16 +145,6 @@
     <label for="preferred-time">Preferred Time *</label>
     <select id="preferred-time" name="preferred_time" required>
       <option value="" disabled selected>Select a time</option>
-      <option value="8:00 AM">8:00 AM</option>
-      <option value="9:00 AM">9:00 AM</option>
-      <option value="10:00 AM">10:00 AM</option>
-      <option value="11:00 AM">11:00 AM</option>
-      <option value="12:00 PM">12:00 PM</option>
-      <option value="1:00 PM">1:00 PM</option>
-      <option value="2:00 PM">2:00 PM</option>
-      <option value="3:00 PM">3:00 PM</option>
-      <option value="4:00 PM">4:00 PM</option>
-      <option value="5:00 PM">5:00 PM</option>
     </select>
 
     <label for="notes">Additional Notes or Requests</label>
@@ -185,7 +175,7 @@
     <div class="footer-bottom">© McDaniel Detailing</div>
   </footer>
 
-  <script>
+<script>
   const serviceRadios = document.querySelectorAll('input[name="main_service"]');
   const vehicleState = document.getElementById('vehicle-state');
   const dirtinessInputs = vehicleState.querySelectorAll('select');
@@ -193,6 +183,9 @@
   const locationSelect = document.getElementById('location');
   const checklistSection = document.getElementById('client-checklist');
   const checklistInput = document.getElementById('confirm-conditions');
+
+  const dateInput = document.getElementById('preferred-date');
+  const timeSelect = document.getElementById('preferred-time');
 
   function updateFormLogic() {
     const selectedService = [...serviceRadios].find(r => r.checked)?.value;
@@ -212,14 +205,70 @@
       checklistSection.style.display = 'none';
       checklistInput.removeAttribute('required');
     }
+
+    updateTimeOptions(); // Call this to re-evaluate times
   }
 
-  // Bind listeners
+  function generateTimeOptions(startHour, endHour, interval = 30) {
+    const options = [];
+    for (let hour = startHour; hour <= endHour; hour++) {
+      for (let minutes = 0; minutes < 60; minutes += interval) {
+        if (hour === endHour && minutes > 0) break;
+        const date = new Date();
+        date.setHours(hour, minutes);
+        const timeString = date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+        options.push(timeString);
+      }
+    }
+    return options;
+  }
+
+  function updateTimeOptions() {
+    const selectedService = [...serviceRadios].find(r => r.checked)?.value;
+    if (!selectedService || !dateInput.value) return;
+
+    const selectedDate = new Date(dateInput.value);
+    const day = selectedDate.getDay(); // Sunday = 0, Saturday = 6
+    const isWeekend = (day === 0 || day === 6);
+
+    let times = [];
+
+    if (selectedService === "Full Detail") {
+      if (isWeekend) {
+        times = generateTimeOptions(7, 12); // 7:00 AM – 12:00 PM
+      } else {
+        times = ["3:00 PM"];
+      }
+    }
+
+    if (selectedService === "Interior Detail" || selectedService === "Exterior Detail") {
+      if (isWeekend) {
+        times = generateTimeOptions(7, 15); // 7:00 AM – 3:00 PM
+      } else {
+        times = generateTimeOptions(15, 17); // 3:00 PM – 5:00 PM
+      }
+    }
+
+    // Clear and repopulate time select
+    timeSelect.innerHTML = '<option value="" disabled selected>Select a time</option>';
+    times.forEach(time => {
+      const option = document.createElement('option');
+      option.value = time;
+      option.textContent = time;
+      timeSelect.appendChild(option);
+    });
+  }
+
+  // Event Listeners
   serviceRadios.forEach(radio => radio.addEventListener('change', updateFormLogic));
   locationSelect.addEventListener('change', updateFormLogic);
+  dateInput.addEventListener('change', updateTimeOptions);
 
-  // Run on page load in case a radio is pre-selected
-  window.addEventListener('DOMContentLoaded', updateFormLogic);
+  // On page load
+  window.addEventListener('DOMContentLoaded', () => {
+    updateFormLogic();
+    if (dateInput.value) updateTimeOptions();
+  });
 </script>
   
 </body>
