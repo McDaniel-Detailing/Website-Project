@@ -30,82 +30,138 @@
   </header>
 
   <!-- Booking Form Wrapped in Container -->
-<form action="https://formspree.io/f/xyzwabaq" method="POST">
-  <!-- CLIENT INFO -->
-  <fieldset class="form-section">
-    <legend>1. Client Information</legend>
+<form id="booking-form" action="https://formspree.io/f/xyzwabaq" method="POST">
 
+  <!-- 1. CLIENT INFO -->
+  <fieldset class="form-section">
+    <legend>1. Client Info</legend>
     <label for="name">Full Name *</label>
-    <input type="text" id="name" name="name" pattern="[A-Za-z\s]{2,}" required placeholder="John Doe">
+    <input type="text" id="name" name="name" pattern="^[A-Za-z\s\-']+$" required>
 
     <label for="phone">Phone Number *</label>
-    <input type="tel" id="phone" name="phone" pattern="^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" required placeholder="(123) 456-7890">
+    <input type="tel" id="phone" name="phone" pattern="^\d{10}$" placeholder="10-digit number" required>
 
     <label for="email">Email Address *</label>
-    <input type="email" id="email" name="email" required placeholder="you@example.com">
+    <input type="email" id="email" name="email" required>
   </fieldset>
 
-  <!-- CAR INFO -->
+  <!-- 2. SERVICE SELECTION -->
   <fieldset class="form-section">
-    <legend>2. Vehicle Information</legend>
+    <legend>2. Service Selection</legend>
+    
+    <p><strong>Select One:</strong></p>
+    <label><input type="radio" name="main_service" value="Full Detail" required> “Fresh Start” Full Detail Package</label><br>
+    <label><input type="radio" name="main_service" value="Interior Detail" required> Interior: Deep Clean & Restore</label><br>
+    <label><input type="radio" name="main_service" value="Exterior Detail" required> Exterior: Wash, Decontaminate & Seal</label><br><br>
 
+    <p><strong>Select as Many Add-Ons as You Want:</strong></p>
+    <label><input type="checkbox" name="addons" value="Engine Bay Cleaning"> Engine Bay Cleaning</label><br>
+    <label><input type="checkbox" name="addons" value="Pet Hair Removal"> Pet Hair Removal</label>
+  </fieldset>
+
+  <!-- 3. VEHICLE INFO -->
+  <fieldset class="form-section">
+    <legend>3. Vehicle Info</legend>
     <label for="make">Vehicle Make *</label>
-    <input type="text" id="make" name="make" required placeholder="Toyota">
+    <input type="text" id="make" name="vehicle_make" required>
 
     <label for="model">Vehicle Model *</label>
-    <input type="text" id="model" name="model" required placeholder="Camry">
+    <input type="text" id="model" name="vehicle_model" required>
 
     <label for="year">Vehicle Year *</label>
-    <input type="text" id="year" name="year" pattern="^(19|20)\d{2}$" required placeholder="2020">
+    <input type="number" id="year" name="vehicle_year" min="1900" max="2099" required>
 
-    <hr class="form-divider">
-    <div class="vehicle-state-columns">
-      <!-- Dirtiness -->
-      <legend>Fill these out if your service includes an interior detail.</legend>
-      <div class="vehicle-column">
-        <h4>Interior Dirtiness</h4>
-        <label><input type="radio" name="dirtiness" value="1"> 1 – Just washed, spotless</label>
-        <label><input type="radio" name="dirtiness" value="2"> 2 – Minor dust or fingerprints</label>
-        <label><input type="radio" name="dirtiness" value="3"> 3 – Light dirt or crumbs</label>
-        <label><input type="radio" name="dirtiness" value="4"> 4 – Heavy dirt, mud, or trash</label>
-        <label><input type="radio" name="dirtiness" value="5"> 5 – Extreme filth or neglect</label>
-      </div>
-
-      <!-- Stain/Odor -->
-      <div class="vehicle-column">
-        <h4>Stain / Odor</h4>
-        <label><input type="radio" name="stain_odor" value="1"> 1 – No stains or odors</label>
-        <label><input type="radio" name="stain_odor" value="2"> 2 – Minor stains or faint odor</label>
-        <label><input type="radio" name="stain_odor" value="3"> 3 – Moderate stains or smells</label>
-        <label><input type="radio" name="stain_odor" value="4"> 4 – Strong stains or odors</label>
-        <label><input type="radio" name="stain_odor" value="5"> 5 – Severe stains or intense smell</label>
-      </div>
-
-      <!-- Pet Hair -->
-      <div class="vehicle-column">
-        <h4>Pet Hair</h4>
-        <label><input type="radio" name="pet_hair" value="1"> 1 – No pet hair</label>
-        <label><input type="radio" name="pet_hair" value="2"> 2 – A few stray hairs</label>
-        <label><input type="radio" name="pet_hair" value="3"> 3 – Noticeable patches</label>
-        <label><input type="radio" name="pet_hair" value="4"> 4 – Hair on most surfaces</label>
-        <label><input type="radio" name="pet_hair" value="5"> 5 – Thick covering of hair</label>
+    <div id="vehicle-state" style="display: none; margin-top: 20px;">
+      <legend>State of Vehicle</legend>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <!-- Dirtiness -->
+        <div>
+          <h4>Dirtiness</h4>
+          <select name="dirtiness" required>
+            <option value="" disabled selected>Select level</option>
+            <option value="1 - Spotless">1 - Spotless</option>
+            <option value="2 - Lightly dusty">2 - Lightly dusty</option>
+            <option value="3 - Moderate dirt">3 - Moderate dirt</option>
+            <option value="4 - Heavy buildup">4 - Heavy buildup</option>
+            <option value="5 - Extreme grime">5 - Extreme grime</option>
+          </select>
+        </div>
+        <!-- Stains / Odors -->
+        <div>
+          <h4>Stains / Odors</h4>
+          <select name="stains_odors" required>
+            <option value="" disabled selected>Select level</option>
+            <option value="1 - None">1 - None</option>
+            <option value="2 - Faint odor / mild stains">2 - Faint odor / mild stains</option>
+            <option value="3 - Moderate stains / smell">3 - Moderate stains / smell</option>
+            <option value="4 - Strong stains / odor">4 - Strong stains / odor</option>
+            <option value="5 - Severe stains / odor">5 - Severe stains / odor</option>
+          </select>
+        </div>
+        <!-- Pet Hair -->
+        <div>
+          <h4>Pet Hair</h4>
+          <select name="pet_hair" required>
+            <option value="" disabled selected>Select level</option>
+            <option value="1 - None">1 - None</option>
+            <option value="2 - Minimal">2 - Minimal</option>
+            <option value="3 - Some throughout">3 - Some throughout</option>
+            <option value="4 - Dense areas">4 - Dense areas</option>
+            <option value="5 - Covers surfaces">5 - Covers surfaces</option>
+          </select>
+        </div>
       </div>
     </div>
   </fieldset>
 
-  <!-- SCHEDULING -->
+  <!-- 4. LOCATION -->
   <fieldset class="form-section">
-    <legend>3. Scheduling Preferences</legend>
+    <legend>4. Location</legend>
+    <label for="location">Where would you like your detail performed? *</label>
+    <select id="location" name="location" required>
+      <option value="" disabled selected>Select location</option>
+      <option value="Client's Home">Client's Home</option>
+      <option value="McDaniel Detailing Location">McDaniel Detailing Tacoma Location</option>
+    </select>
+
+    <div id="client-checklist" style="display: none; margin-top: 10px;">
+      <label>
+        <input type="checkbox" id="confirm-conditions" name="client_conditions" required>
+        I confirm I will provide access to water, power, and sufficient working space at the selected location.
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- 5. SCHEDULING -->
+  <fieldset class="form-section">
+    <legend>5. Scheduling</legend>
     <p>
-      We prioritize bookings on <strong>Tuesdays, Thursdays, and Saturdays</strong>, but we are happy to work with your availability on any day <strong>except Sunday</strong>. 
-      We will follow up to confirm your appointment time and pricing. On weekdays we are open from 3:00 PM - 8:00 PM. On Saturday we are open from 6:00 AM - 6:00 PM
+      We prefer scheduling on <strong>Tuesdays, Thursdays, and Saturdays</strong>, but we’re happy to coordinate with your availability on any day except Sunday. After submission, we will contact you to confirm the exact appointment time and pricing.
     </p>
-    
-    <label for="notes">Additional Notes or Scheduling Specifications</label>
+
+    <label for="preferred-date">Preferred Date *</label>
+    <input type="date" id="preferred-date" name="preferred_date" required>
+
+    <label for="preferred-time">Preferred Time *</label>
+    <select id="preferred-time" name="preferred_time" required>
+      <option value="" disabled selected>Select a time</option>
+      <option value="8:00 AM">8:00 AM</option>
+      <option value="9:00 AM">9:00 AM</option>
+      <option value="10:00 AM">10:00 AM</option>
+      <option value="11:00 AM">11:00 AM</option>
+      <option value="12:00 PM">12:00 PM</option>
+      <option value="1:00 PM">1:00 PM</option>
+      <option value="2:00 PM">2:00 PM</option>
+      <option value="3:00 PM">3:00 PM</option>
+      <option value="4:00 PM">4:00 PM</option>
+      <option value="5:00 PM">5:00 PM</option>
+    </select>
+
+    <label for="notes">Additional Notes or Requests</label>
     <textarea id="notes" name="notes" rows="4" placeholder="Let us know if you have any specific concerns or requests..."></textarea>
   </fieldset>
 
-  <button type="submit" class="btn primary square">Submit Request</button>
+  <button class="btn primary square" type="submit">Submit Booking</button>
 </form>
   <!-- Footer -->
   <footer>
