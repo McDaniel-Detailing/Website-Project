@@ -186,52 +186,41 @@
   </footer>
 
   <script>
-    function toggleAccessField() {
-      const location = document.getElementById('location').value;
-      const accessField = document.getElementById('access-checkbox');
-      const accessCheckbox = document.getElementById('access');
+  const serviceRadios = document.querySelectorAll('input[name="main_service"]');
+  const vehicleState = document.getElementById('vehicle-state');
+  const dirtinessInputs = vehicleState.querySelectorAll('select');
 
-      if (location === 'we-come') {
-        accessField.style.display = 'block';
-        accessCheckbox.setAttribute('required', 'true');
-      } else {
-        accessField.style.display = 'none';
-        accessCheckbox.removeAttribute('required');
-      }
-    }
-    <script>
-      const serviceRadios = document.querySelectorAll('input[name="main_service"]');
-      const vehicleState = document.getElementById('vehicle-state');
-      const dirtinessInputs = vehicleState.querySelectorAll('select');
-    
-      const locationSelect = document.getElementById('location');
-      const checklistSection = document.getElementById('client-checklist');
-      const checklistInput = document.getElementById('confirm-conditions');
-    
-      function updateFormLogic() {
-        const selectedService = [...serviceRadios].find(r => r.checked)?.value;
+  const locationSelect = document.getElementById('location');
+  const checklistSection = document.getElementById('client-checklist');
+  const checklistInput = document.getElementById('confirm-conditions');
 
-      if (selectedService === "Full Detail" || selectedService === "Interior Detail") {
-        vehicleState.style.display = 'block';
-        dirtinessInputs.forEach(el => el.setAttribute('required', 'required'));
-      } else {
-        vehicleState.style.display = 'none';
-        dirtinessInputs.forEach(el => el.removeAttribute('required'));
-      }
-  
-      if (locationSelect.value === "Client's Home") {
-        checklistSection.style.display = 'block';
-        checklistInput.setAttribute('required', 'required');
-      } else {
-        checklistSection.style.display = 'none';
-        checklistInput.removeAttribute('required');
-      }
+  function updateFormLogic() {
+    const selectedService = [...serviceRadios].find(r => r.checked)?.value;
+
+    if (selectedService === "Full Detail" || selectedService === "Interior Detail") {
+      vehicleState.style.display = 'block';
+      dirtinessInputs.forEach(el => el.setAttribute('required', 'required'));
+    } else {
+      vehicleState.style.display = 'none';
+      dirtinessInputs.forEach(el => el.removeAttribute('required'));
     }
-  
-    serviceRadios.forEach(radio => radio.addEventListener('change', updateFormLogic));
-    locationSelect.addEventListener('change', updateFormLogic);
+
+    if (locationSelect.value === "Client's Home") {
+      checklistSection.style.display = 'block';
+      checklistInput.setAttribute('required', 'required');
+    } else {
+      checklistSection.style.display = 'none';
+      checklistInput.removeAttribute('required');
+    }
+  }
+
+  // Bind listeners
+  serviceRadios.forEach(radio => radio.addEventListener('change', updateFormLogic));
+  locationSelect.addEventListener('change', updateFormLogic);
+
+  // Run on page load in case a radio is pre-selected
+  window.addEventListener('DOMContentLoaded', updateFormLogic);
 </script>
-
-  </script>
+  
 </body>
 </html>
