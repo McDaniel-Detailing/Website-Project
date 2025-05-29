@@ -186,10 +186,13 @@
 
   const dateInput = document.getElementById('preferred-date');
   const timeSelect = document.getElementById('preferred-time');
+  const dateField = document.querySelector('label[for="preferred-date"]');
+  const timeField = document.querySelector('label[for="preferred-time"]');
 
   function updateFormLogic() {
     const selectedService = [...serviceRadios].find(r => r.checked)?.value;
 
+    // Show/hide vehicle condition questions
     if (selectedService === "Full Detail" || selectedService === "Interior Detail") {
       vehicleState.style.display = 'block';
       dirtinessInputs.forEach(el => el.setAttribute('required', 'required'));
@@ -198,6 +201,7 @@
       dirtinessInputs.forEach(el => el.removeAttribute('required'));
     }
 
+    // Show/hide location checklist
     if (locationSelect.value === "Client's Home") {
       checklistSection.style.display = 'block';
       checklistInput.setAttribute('required', 'required');
@@ -206,7 +210,16 @@
       checklistInput.removeAttribute('required');
     }
 
-    updateTimeOptions(); // Call this to re-evaluate times
+    // Show/hide date field
+    if (selectedService) {
+      dateInput.parentElement.style.display = 'block';
+    } else {
+      dateInput.value = "";
+      dateInput.parentElement.style.display = 'none';
+      timeSelect.parentElement.style.display = 'none';
+    }
+
+    updateTimeOptions(); // Recalculate available times
   }
 
   function generateTimeOptions(startHour, endHour, interval = 30) {
@@ -225,31 +238,28 @@
 
   function updateTimeOptions() {
     const selectedService = [...serviceRadios].find(r => r.checked)?.value;
-    if (!selectedService || !dateInput.value) return;
+    const dateValue = dateInput.value;
 
-    const selectedDate = new Date(dateInput.value);
-    const day = selectedDate.getDay(); // Sunday = 0, Saturday = 6
+    if (!selectedService || !dateValue) {
+      timeSelect.parentElement.style.display = 'none';
+      return;
+    }
+
+    const selectedDate = new Date(dateValue);
+    const day = selectedDate.getDay();
     const isWeekend = (day === 0 || day === 6);
-
     let times = [];
 
     if (selectedService === "Full Detail") {
-      if (isWeekend) {
-        times = generateTimeOptions(7, 12); // 7:00 AM – 12:00 PM
-      } else {
-        times = ["3:00 PM"];
-      }
+      if (isWeekend) times = generateTimeOptions(7, 12);
+      else times = ["3:00 PM"];
     }
 
     if (selectedService === "Interior Detail" || selectedService === "Exterior Detail") {
-      if (isWeekend) {
-        times = generateTimeOptions(7, 15); // 7:00 AM – 3:00 PM
-      } else {
-        times = generateTimeOptions(15, 17); // 3:00 PM – 5:00 PM
-      }
+      if (isWeekend) times = generateTimeOptions(7, 15);
+      else times = generateTimeOptions(15, 17);
     }
 
-    // Clear and repopulate time select
     timeSelect.innerHTML = '<option value="" disabled selected>Select a time</option>';
     times.forEach(time => {
       const option = document.createElement('option');
@@ -257,6 +267,8 @@
       option.textContent = time;
       timeSelect.appendChild(option);
     });
+
+    timeSelect.parentElement.style.display = times.length ? 'block' : 'none';
   }
 
   // Event Listeners
@@ -264,10 +276,11 @@
   locationSelect.addEventListener('change', updateFormLogic);
   dateInput.addEventListener('change', updateTimeOptions);
 
-  // On page load
+  // Init on load
   window.addEventListener('DOMContentLoaded', () => {
+    dateInput.parentElement.style.display = 'none';
+    timeSelect.parentElement.style.display = 'none';
     updateFormLogic();
-    if (dateInput.value) updateTimeOptions();
   });
 </script>
   
