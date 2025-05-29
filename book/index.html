@@ -59,12 +59,10 @@
     <input type="text" id="year" name="year" pattern="^(19|20)\d{2}$" required placeholder="2020">
 
     <hr class="form-divider">
-
-    <p><strong>State of Vehicle:</strong> Please rate each category below.</p>
     <div class="vehicle-state-columns">
       <!-- Dirtiness -->
       <div class="vehicle-column">
-        <h4>Dirtiness</h4>
+        <h4>Dirtiness *</h4>
         <label><input type="radio" name="dirtiness" value="1" required> 1 – Just washed, spotless</label>
         <label><input type="radio" name="dirtiness" value="2"> 2 – Minor dust or fingerprints</label>
         <label><input type="radio" name="dirtiness" value="3"> 3 – Light dirt or crumbs</label>
@@ -74,7 +72,7 @@
 
       <!-- Stain/Odor -->
       <div class="vehicle-column">
-        <h4>Stain / Odor</h4>
+        <h4>Stain / Odor *</h4>
         <label><input type="radio" name="stain_odor" value="1" required> 1 – No stains or odors</label>
         <label><input type="radio" name="stain_odor" value="2"> 2 – Minor stains or faint odor</label>
         <label><input type="radio" name="stain_odor" value="3"> 3 – Moderate stains or smells</label>
@@ -84,7 +82,7 @@
 
       <!-- Pet Hair -->
       <div class="vehicle-column">
-        <h4>Pet Hair</h4>
+        <h4>Pet Hair *</h4>
         <label><input type="radio" name="pet_hair" value="1" required> 1 – No pet hair</label>
         <label><input type="radio" name="pet_hair" value="2"> 2 – A few stray hairs</label>
         <label><input type="radio" name="pet_hair" value="3"> 3 – Noticeable patches</label>
@@ -99,13 +97,10 @@
     <legend>3. Scheduling Preferences</legend>
     <p>
       We prioritize bookings on <strong>Tuesdays, Thursdays, and Saturdays</strong>, but we are happy to work with your availability on any day <strong>except Sunday</strong>. 
-      We will follow up to confirm your appointment time and pricing.
+      We will follow up to confirm your appointment time and pricing. On weekdays we are open from 3:00 PM - 8:00 PM. On Saturday we are open from 6:00 AM - 6:00 PM
     </p>
-
-    <label for="preferred-date">Preferred Date *</label>
-    <input type="date" id="preferred-date" name="preferred_date" required>
-
-    <label for="notes">Additional Notes or Requests</label>
+    
+    <label for="notes">Additional Notes or Scheduling Specifications</label>
     <textarea id="notes" name="notes" rows="4" placeholder="Let us know if you have any specific concerns or requests..."></textarea>
   </fieldset>
 
